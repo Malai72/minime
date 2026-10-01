@@ -1,0 +1,108 @@
+/* ЛР3. Основы CSS: шрифт, размер и жирность текста, межстрочный интервал,
+   выравнивание, цвета текста и фона, ссылки, границы и скругления */
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212a2f;
+  background-color: #fff;
+}
+
+a {
+  color: #212a2f;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+.nav-link {
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.hero-text {
+  font-size: 1.125rem;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+.button {
+  font-family: inherit;
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #212a2f;
+  border: 2px solid #212a2f;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.button-light {
+  color: #212a2f;
+  background-color: #fff;
+}
+
+.card-image {
+  border-radius: .5rem;
+}
+
+.card-title {
+  font-size: 1.375rem;
+}
+
+.card-text {
+  font-size: .875rem;
+}
+
+.banner-content {
+  text-align: center;
+}
+
+.footer {
+  font-size: .875rem;
+  color: #fff;
+  background-color: #212a2f;
+}
+
+.footer-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.footer-link {
+  color: #fff;
+}
+
+.subscribe-input {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #d3d4d5;
+  border-radius: .25rem;
+}
+
+.copyright {
+  text-align: center;
+}
