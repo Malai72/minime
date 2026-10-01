@@ -264,3 +264,68 @@ img {
 .copyright {
   margin: 3rem 0 0;
 }
+
+/* ЛР5. Flexbox, цвета в разных форматах (RGB, RGBA, HSL, HSLA, имя),
+   относительные единицы (rem, %, vw, vh) */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-list {
+  display: flex;
+  flex: 1 1 0;
+  gap: 2rem;
+}
+
+.nav-list-right {
+  justify-content: flex-end;
+}
+
+.hero {
+  max-height: 85vh;
+}
+
+.hero-title {
+  font-size: 3.3vw;
+}
+
+.cards {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.card {
+  flex: 1 1 0;
+}
+
+.card-text {
+  color: rgb(77, 85, 89);
+}
+
+.subscribe-input {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.footer-columns {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-column {
+  flex: 1 1 0;
+}
+
+.footer-title {
+  color: hsl(0, 0%, 100%);
+}
+
+.copyright {
+  color: hsla(0, 0%, 100%, .6);
+}
+
+.header {
+  background-color: white;
+}
