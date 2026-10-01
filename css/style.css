@@ -329,3 +329,21 @@ img {
 .header {
   background-color: white;
 }
+
+/* ЛР6. Изображения: фон hero, object-fit и object-position */
+
+.hero {
+  background-image: url('../images/hero.jpg');
+  background-position: right center;
+  background-size: cover;
+}
+
+.banner-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
