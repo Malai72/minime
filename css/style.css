@@ -623,24 +623,32 @@ img {
   background-image: conic-gradient(#7b3fe4, #ff6fae, #ffd166, #7b3fe4);
 }
 
-.transform-rotate {
-  transform: rotate(15deg);
+/* Преобразования срабатывают при наведении, transition делает их плавными */
+.transform-rotate,
+.transform-scale,
+.transform-rotate-y,
+.transform-rotate-x {
+  transition: transform .6s ease;
 }
 
-.transform-scale {
-  transform: scale(.8) skewX(-10deg);
+.transform-rotate:hover {
+  transform: rotate(45deg);
+}
+
+.transform-scale:hover {
+  transform: scale(1.2) skewX(-15deg);
 }
 
 .demo-3d {
   perspective: 40rem;
 }
 
-.transform-rotate-y {
-  transform: rotateY(45deg);
+.transform-rotate-y:hover {
+  transform: rotateY(60deg);
 }
 
-.transform-rotate-x {
-  transform: rotateX(45deg);
+.transform-rotate-x:hover {
+  transform: rotateX(60deg);
 }
 
 .transition-color {
