@@ -423,3 +423,80 @@ img {
   margin-right: .5rem;
   vertical-align: middle;
 }
+
+/* ЛР8. Псевдоклассы и псевдоэлементы */
+
+::selection {
+  color: #fff;
+  background-color: #7b3fe4;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #7b3fe4;
+}
+
+.nav-link:active {
+  color: #4d5559;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  text-decoration: underline;
+}
+
+.footer-link:active {
+  color: #d3d4d5;
+}
+
+.button:hover {
+  color: #fff;
+  background-color: #7b3fe4;
+  border-color: #7b3fe4;
+}
+
+.button:active {
+  background-color: #4d5559;
+  border-color: #4d5559;
+}
+
+.button:focus {
+  outline: 3px solid #b9a1f2;
+  outline-offset: 2px;
+}
+
+.form-input:focus {
+  border-color: #7b3fe4;
+  outline: none;
+}
+
+.form-input::placeholder,
+.subscribe-input::placeholder {
+  font-style: italic;
+  color: #9aa0a6;
+}
+
+.form-input:required {
+  border-left: 4px solid #7b3fe4;
+}
+
+.choice-list input {
+  accent-color: #7b3fe4;
+}
+
+.choice-list input:checked + label {
+  font-weight: 500;
+  color: #7b3fe4;
+}
+
+.choice-list input[type='checkbox']:checked + label {
+  text-decoration: line-through;
+}
+
+.choice-list li:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+.choice-list li:nth-child(even) {
+  background-color: #ece4fb;
+}
