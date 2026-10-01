@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Demo — MINIME</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="index.html#popular">Популярное</a></li>
+        <li><a class="nav-link" href="index.html#categories">Категории</a></li>
+      </ul>
+      <a class="logo" href="index.html">
+        <img src="images/logo.svg" alt="MINIME — на главную" width="120" height="38">
+      </a>
+      <ul class="nav-list nav-list-right">
+        <li><a class="nav-link" href="index.html#works">Наши работы</a></li>
+        <li><a class="nav-link" href="form.html">Регистрация</a></li>
+        <li><a class="nav-link" href="demo.html">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="demo">
+    <h1 class="demo-title">Демонстрация CSS</h1>
+
+    <section class="demo-section">
+      <h2 class="section-title">Градиенты</h2>
+      <div class="demo-row">
+        <div class="demo-box gradient-linear">linear-gradient</div>
+        <div class="demo-box gradient-radial">radial-gradient</div>
+        <div class="demo-box gradient-conic">conic-gradient</div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2 class="section-title">2D-преобразования</h2>
+      <div class="demo-row">
+        <div class="demo-box transform-rotate">rotate</div>
+        <div class="demo-box transform-scale">scale + skew</div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2 class="section-title">3D-преобразования</h2>
+      <div class="demo-row demo-3d">
+        <div class="demo-box transform-rotate-y">rotateY</div>
+        <div class="demo-box transform-rotate-x">rotateX</div>
+      </div>
+    </section>
+
+    <section class="demo-section">
+      <h2 class="section-title">Переходы</h2>
+      <div class="demo-row">
+        <div class="demo-box transition-color">Наведи: цвет</div>
+        <div class="demo-box transition-move">Наведи: движение</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <form class="subscribe" action="https://httpbin.org/post" method="post">
+        <label class="subscribe-label" for="subscribe-email">Подпишись на новости MINIME</label>
+        <input class="subscribe-input" id="subscribe-email" type="email" name="email" placeholder="you@example.com" required>
+        <button class="button button-light" type="submit">Подписаться</button>
+      </form>
+
+      <div class="footer-columns">
+        <section class="footer-column">
+          <h2 class="footer-title">Контакты</h2>
+          <ul class="footer-list">
+            <li><a class="footer-link" href="tel:+79991234567">+7 (999) 123-45-67</a></li>
+            <li><a class="footer-link" href="mailto:hello@minime.ru">hello@minime.ru</a></li>
+          </ul>
+        </section>
+        <section class="footer-column">
+          <h2 class="footer-title">Каталог</h2>
+          <ul class="footer-list">
+            <li><a class="footer-link" href="index.html#popular">Популярное</a></li>
+            <li><a class="footer-link" href="index.html#categories">Категории</a></li>
+            <li><a class="footer-link" href="index.html#works">Наши работы</a></li>
+          </ul>
+        </section>
+        <section class="footer-column">
+          <h2 class="footer-title">Страницы</h2>
+          <ul class="footer-list">
+            <li><a class="footer-link" href="index.html">Главная</a></li>
+            <li><a class="footer-link" href="form.html">Регистрация</a></li>
+            <li><a class="footer-link" href="demo.html">Demo</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <p class="copyright">© 2026 MINIME</p>
+    </div>
+  </footer>
+</body>
+</html>
