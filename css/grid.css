@@ -1,0 +1,442 @@
+/* Grid-тестер на странице demo.html: песочница, bento, наложение,
+   dense, grid-template-areas и шпаргалка */
+
+.demo [id] {
+  scroll-margin-top: 5rem;
+}
+
+.demo-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 0 0 3rem;
+  padding: 0;
+  list-style: none;
+}
+
+.demo-nav a {
+  display: block;
+  padding: .5rem 1rem;
+  font-size: .875rem;
+  border: 1px solid #212a2f;
+  border-radius: 2rem;
+  transition: background-color .3s ease, border-color .3s ease, color .3s ease;
+}
+
+.demo-nav a:hover,
+.demo-nav a:focus {
+  color: #fff;
+  background-color: #7b3fe4;
+  border-color: #7b3fe4;
+}
+
+.block {
+  padding: 2rem 0;
+  border-top: 1px solid #d3d4d5;
+}
+
+.block-title {
+  margin: 0 0 .5rem;
+  font-size: 1.375rem;
+}
+
+.block-note {
+  max-width: 40rem;
+  margin: 0 0 1.5rem;
+  color: #4d5559;
+}
+
+.block-note code,
+.cheat code {
+  padding: 0 .3rem;
+  background-color: #ece4fb;
+  border-radius: .25rem;
+}
+
+.code {
+  min-width: 0;
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: .8125rem;
+  line-height: 1.6;
+  color: #ece4fb;
+  background-color: #212a2f;
+  border-radius: .5rem;
+}
+
+/* 1. Песочница: сама раскладка тоже на grid */
+
+.sandbox {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.controls {
+  display: grid;
+  gap: .75rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: .5rem;
+}
+
+.controls label {
+  display: grid;
+  gap: .25rem;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.controls select {
+  padding: .4rem;
+  background-color: #fff;
+  border: 1px solid #d3d4d5;
+  border-radius: .25rem;
+}
+
+.controls .check {
+  grid-auto-flow: column;
+  gap: .5rem;
+  align-items: center;
+  justify-content: start;
+}
+
+.controls input {
+  accent-color: #7b3fe4;
+}
+
+.sandbox-view {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.sandbox-grid {
+  display: grid;
+  min-height: 14rem;
+  padding: .75rem;
+  overflow-x: auto;
+  border: 2px dashed #d3d4d5;
+  border-radius: .5rem;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: .25rem .5rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #7b3fe4;
+  border-radius: .5rem;
+}
+
+.cell:nth-child(even) {
+  background-color: #212a2f;
+}
+
+.sandbox-grid .cell-big {
+  background-color: #ff6fae;
+}
+
+/* 2. Bento: плитки разного размера в одной сетке */
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 7rem;
+  gap: .75rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem;
+  font-weight: 500;
+  border: 1px solid #d3d4d5;
+  border-radius: .5rem;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.tile:hover {
+  box-shadow: 0 .75rem 1.5rem rgba(0, 0, 0, .12);
+  transform: translateY(-4px);
+}
+
+.tile b {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.tile span {
+  font-size: .75rem;
+  font-weight: 400;
+  opacity: .7;
+}
+
+.t1 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+  color: #fff;
+  background-color: #7b3fe4;
+}
+
+.t2 {
+  grid-column: 3;
+  grid-row: 1;
+  background-color: #ffd166;
+}
+
+.t3 {
+  grid-column: 4;
+  grid-row: 1 / 3;
+  color: #fff;
+  background-color: #212a2f;
+}
+
+.t4 {
+  grid-column: 3;
+  grid-row: 2 / 4;
+  background-color: #ece4fb;
+}
+
+.t5 {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.t6 {
+  grid-column: 2 / 3;
+  grid-row: 3;
+  color: #fff;
+  background-color: #ff6fae;
+}
+
+.t7 {
+  grid-column: 4;
+  grid-row: 3;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+/* 3. Наложение элементов в одних ячейках без position */
+
+.overlap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 4rem);
+}
+
+.ov {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .5rem;
+}
+
+.ov-photo {
+  z-index: 1;
+  grid-column: 1 / 8;
+  grid-row: 1 / 6;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff;
+  background-image: repeating-linear-gradient(45deg, #7b3fe4 0 1rem, #9b6cf0 1rem 2rem);
+}
+
+.ov-card {
+  z-index: 2;
+  display: block;
+  grid-column: 6 / 12;
+  grid-row: 3 / 7;
+  align-self: center;
+  padding: 1.5rem;
+  font-size: 1.125rem;
+  background-color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, .18);
+}
+
+.ov-card b {
+  font-weight: 500;
+}
+
+.ov-badge {
+  z-index: 3;
+  grid-column: 10 / 13;
+  grid-row: 1 / 3;
+  font-size: 2.5rem;
+  font-weight: 500;
+  background-color: #ffd166;
+  transform: rotate(6deg);
+}
+
+.ov-stripe {
+  z-index: 0;
+  grid-column: 1 / 13;
+  grid-row: 6 / 7;
+  align-self: end;
+  height: 1rem;
+  background-color: #212a2f;
+}
+
+/* 4. Dense: заполнение пустот */
+
+.dense-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+}
+
+.dense-title {
+  margin: 0 0 .5rem;
+  font-size: .875rem;
+  font-weight: 500;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+.dense {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 3rem;
+  gap: .375rem;
+}
+
+.dense-dense {
+  grid-auto-flow: row dense;
+}
+
+.dn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8125rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #7b3fe4;
+  border-radius: .25rem;
+}
+
+.dn-w3 {
+  grid-column: span 3;
+  background-color: #212a2f;
+}
+
+.dn-w2 {
+  grid-column: span 2;
+  background-color: #ff6fae;
+}
+
+/* 5. grid-template-areas */
+
+.areas {
+  display: grid;
+  grid-template-areas:
+    'head head head'
+    'nav  main side'
+    'foot foot foot';
+  grid-template-columns: 10rem 1fr 12rem;
+  grid-template-rows: auto 10rem auto;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.areas > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-weight: 500;
+  border-radius: .5rem;
+}
+
+.a-head {
+  grid-area: head;
+  color: #fff;
+  background-color: #212a2f;
+}
+
+.a-nav {
+  grid-area: nav;
+  background-color: #ece4fb;
+}
+
+.a-main {
+  grid-area: main;
+  border: 1px solid #d3d4d5;
+}
+
+.a-side {
+  grid-area: side;
+  background-color: #ffd166;
+}
+
+.a-foot {
+  grid-area: foot;
+  color: #fff;
+  background-color: #7b3fe4;
+}
+
+/* Шпаргалка */
+
+.cheat {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: .5rem 1.5rem;
+  margin: 0;
+}
+
+.cheat dt {
+  font-family: monospace;
+  font-weight: 700;
+  color: #7b3fe4;
+}
+
+.cheat dd {
+  margin: 0;
+}
+
+/* Узкое окно: сетки перестраиваются */
+
+@media (max-width: 56rem) {
+  .sandbox {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 40rem) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .t1 {
+    grid-column: 1 / 3;
+    grid-row: auto / span 2;
+  }
+
+  .t2,
+  .t3,
+  .t4,
+  .t5,
+  .t6,
+  .t7 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .t6 {
+    grid-column: span 2;
+  }
+
+  .areas {
+    grid-template-areas: 'head' 'main' 'nav' 'side' 'foot';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+}

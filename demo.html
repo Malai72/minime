@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/grid.css">
 </head>
 <body>
   <header class="header">
@@ -28,7 +29,175 @@
   <main class="demo">
     <h1 class="demo-title">Демонстрация CSS</h1>
 
+    <nav aria-label="Разделы страницы">
+      <ul class="demo-nav">
+        <li><a href="#sandbox">Песочница</a></li>
+        <li><a href="#bento">Bento</a></li>
+        <li><a href="#overlap">Наложение</a></li>
+        <li><a href="#dense">Dense</a></li>
+        <li><a href="#areas">Areas</a></li>
+        <li><a href="#cheat">Шпаргалка</a></li>
+        <li><a href="#effects">Градиенты и преобразования</a></li>
+      </ul>
+    </nav>
+
     <section class="demo-section">
+      <h2 class="section-title">Grid-тестер</h2>
+      <p class="block-note">Двумерная сетка: строки и столбцы одновременно. Меняй настройки и смотри, как меняется CSS.</p>
+
+      <section class="block" id="sandbox">
+        <h3 class="block-title">1. Песочница</h3>
+        <p class="block-note">Все свойства контейнера. Справа — CSS, который получился.</p>
+        <div class="sandbox">
+          <form class="controls" id="controls">
+            <label>grid-template-columns
+              <select name="cols">
+                <option value="repeat(3, 1fr)">repeat(3, 1fr)</option>
+                <option value="repeat(4, 1fr)">repeat(4, 1fr)</option>
+                <option value="1fr 2fr 1fr">1fr 2fr 1fr</option>
+                <option value="120px 1fr 80px">120px 1fr 80px</option>
+                <option value="repeat(auto-fit, minmax(110px, 1fr))">auto-fit + minmax(110px, 1fr)</option>
+                <option value="repeat(auto-fill, 90px)">auto-fill, 90px</option>
+              </select>
+            </label>
+            <label>grid-auto-rows
+              <select name="rows">
+                <option value="70px">70px</option>
+                <option value="minmax(70px, auto)">minmax(70px, auto)</option>
+                <option value="100px">100px</option>
+              </select>
+            </label>
+            <label>gap: <span id="gapOut">12px</span>
+              <input type="range" name="gap" min="0" max="40" value="12">
+            </label>
+            <label>justify-items
+              <select name="ji">
+                <option>stretch</option>
+                <option>start</option>
+                <option>center</option>
+                <option>end</option>
+              </select>
+            </label>
+            <label>align-items
+              <select name="ai">
+                <option>stretch</option>
+                <option>start</option>
+                <option>center</option>
+                <option>end</option>
+              </select>
+            </label>
+            <label>grid-auto-flow
+              <select name="flow">
+                <option>row</option>
+                <option>column</option>
+                <option>row dense</option>
+              </select>
+            </label>
+            <label>Ячеек: <span id="countOut">8</span>
+              <input type="range" name="count" min="3" max="16" value="8">
+            </label>
+            <label class="check"><input type="checkbox" name="span"> первая ячейка: span 2 × 2</label>
+          </form>
+          <div class="sandbox-view">
+            <div class="sandbox-grid" id="sbGrid"></div>
+            <pre class="code" id="sbCode"></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="bento">
+        <h3 class="block-title">2. Bento-сетка</h3>
+        <p class="block-note">Плитки разной высоты и ширины в одной сетке. На flex так не получится: у него одна ось, и строки не знают друг о друге.</p>
+        <div class="bento">
+          <div class="tile t1"><b>Mini Me</b><span>span 2 × 2</span></div>
+          <div class="tile t2">Couple</div>
+          <div class="tile t3">Pet</div>
+          <div class="tile t4"><b>Family</b><span>span 1 × 2</span></div>
+          <div class="tile t5">Character</div>
+          <div class="tile t6"><b>Photo → 3D</b><span>grid-column: 2 / 3</span></div>
+          <div class="tile t7">★</div>
+        </div>
+      </section>
+
+      <section class="block" id="overlap">
+        <h3 class="block-title">3. Наложение без position</h3>
+        <p class="block-note">Элементы в одних и тех же ячейках. Порядок слоёв задаёт z-index, без absolute и без выпадения из потока.</p>
+        <div class="overlap">
+          <div class="ov ov-photo">фото</div>
+          <div class="ov ov-card"><b>Некоторые моменты</b> хочется оставить не только на фотографии.</div>
+          <div class="ov ov-badge">3D</div>
+          <div class="ov ov-stripe"></div>
+        </div>
+      </section>
+
+      <section class="block" id="dense">
+        <h3 class="block-title">4. Dense: заполнение пустот</h3>
+        <p class="block-note">Слева — обычный порядок, остаются пустоты. Справа — <code>grid-auto-flow: row dense</code>, маленькие плитки встают в пустые места.</p>
+        <div class="dense-pair">
+          <div>
+            <h4 class="dense-title">row</h4>
+            <div class="dense" id="dn"></div>
+          </div>
+          <div>
+            <h4 class="dense-title">row dense</h4>
+            <div class="dense dense-dense" id="dd"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="areas">
+        <h3 class="block-title">5. grid-template-areas</h3>
+        <p class="block-note">Раскладка задаётся словами. Если сузить окно, карта областей меняется, а HTML остаётся тем же.</p>
+        <div class="areas">
+          <div class="a-head">header</div>
+          <div class="a-nav">nav</div>
+          <div class="a-main">main</div>
+          <div class="a-side">aside</div>
+          <div class="a-foot">footer</div>
+        </div>
+        <pre class="code">.areas {
+  display: grid;
+  grid-template-areas:
+    'head head head'
+    'nav  main side'
+    'foot foot foot';
+  grid-template-columns: 10rem 1fr 12rem;
+}
+
+@media (max-width: 40rem) {
+  .areas {
+    grid-template-areas: 'head' 'main' 'nav' 'side' 'foot';
+    grid-template-columns: 1fr;
+  }
+}</pre>
+      </section>
+
+      <section class="block" id="cheat">
+        <h3 class="block-title">Шпаргалка</h3>
+        <dl class="cheat">
+          <dt>fr</dt>
+          <dd>доля свободного места</dd>
+          <dt>repeat(n, …)</dt>
+          <dd>повтор колонок или строк</dd>
+          <dt>minmax(a, b)</dt>
+          <dd>размер от a до b</dd>
+          <dt>auto-fit / auto-fill</dt>
+          <dd>сколько колонок поместится; auto-fit схлопывает пустые</dd>
+          <dt>grid-column: 1 / 3</dt>
+          <dd>от линии 1 до линии 3; <code>span 2</code> — занять две</dd>
+          <dt>grid-area</dt>
+          <dd>имя области или row-start / col-start / row-end / col-end</dd>
+          <dt>justify-/align-items</dt>
+          <dd>выравнивание содержимого в ячейке (по x / по y)</dd>
+          <dt>justify-/align-content</dt>
+          <dd>выравнивание всей сетки в контейнере</dd>
+          <dt>gap</dt>
+          <dd>промежутки между ячейками</dd>
+        </dl>
+      </section>
+    </section>
+
+    <section class="demo-section" id="effects">
       <h2 class="section-title">Градиенты</h2>
       <div class="demo-row">
         <div class="demo-box gradient-linear">linear-gradient</div>
@@ -99,5 +268,7 @@
       <p class="copyright">© 2026 MINIME</p>
     </div>
   </footer>
+
+  <script src="js/grid.js"></script>
 </body>
 </html>
