@@ -1,5 +1,5 @@
 /* Grid-тестер на странице demo.html: песочница, bento, наложение,
-   dense, grid-template-areas и шпаргалка */
+   dense и grid-template-areas */
 
 .demo [id] {
   scroll-margin-top: 5rem;
@@ -46,8 +46,7 @@
   color: #4d5559;
 }
 
-.block-note code,
-.cheat code {
+.block-note code {
   padding: 0 .3rem;
   background-color: #ece4fb;
   border-radius: .25rem;
@@ -381,25 +380,6 @@
   grid-area: foot;
   color: #fff;
   background-color: #7b3fe4;
-}
-
-/* Шпаргалка */
-
-.cheat {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: .5rem 1.5rem;
-  margin: 0;
-}
-
-.cheat dt {
-  font-family: monospace;
-  font-weight: 700;
-  color: #7b3fe4;
-}
-
-.cheat dd {
-  margin: 0;
 }
 
 /* Узкое окно: сетки перестраиваются */
